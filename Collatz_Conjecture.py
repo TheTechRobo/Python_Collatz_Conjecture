@@ -1,22 +1,37 @@
 #Collatz Conjecture Program
 #Created by Lewis Watson
+#Modified greatly by TheTechRobo
 
 from time import perf_counter_ns
 it_count = 0
 n = 0
 
-def Select_Number():
-    print ("")
-    sn = int(input("Select the number you wish to calculate? "))
-    if (sn == 0):
-        print ("This number is invalid.")
-        print ()
-        print ()
-        Select_Number();
+def Select_Number(p=False):
+    """
+    parameter p: Whether to print or not, default being False.
+    """
+    if p:
+        def p(string):
+            print(string, end=", ")
     else:
-        Calculate(sn);
+        def p(string):
+            pass
+    try:
+        sn = int(input("\nEnter the number you wish to calculate: "))
+    except Exception as ename:
+        raise ValueError("Invalid number.\n\n")
+        Select_Number()
+    if (sn == 0):
+        raise ValueError("Invalid number.\n\n")
+        Select_Number()
+    else:
+        Calculate(sn)
 
-def Calculate(n):
+def Calculate(n, p):
+    """
+    parameter n: Number to calculate
+    parameter p: The function p() that should be passed
+    """
     global it_count
     it_count = 0
 
@@ -25,18 +40,21 @@ def Calculate(n):
     while n != 1:
         if (n % 2):
             n = (n*3+1)
-            #print (n) #Prints All Numbers (Slows Program Speed)
+            p(n) #If the user enabled printing of the numbers, it prints them. Else it doesnt.
             it_count += 1
         else:
             n = (n//2)
-            #print (n) #Prints All Numbers (Slows Program Speed)
+            p(n)
             it_count += 1
-
     end = perf_counter_ns()
     print ("The number has reached " + str(n) + " with only " + str(it_count) + " iterations! (Time taken: " + format(end-start) + " nanoseconds.)")
-    print()
-    Select_Number();
+    Select_Number()
 
-Select_Number();
-
-
+if __name__ == "__main__":
+    p = input("Would you like to print all numbers? The downside is that it may slow program speed.\nType Y/N: ")
+    p = p.lower()
+    if p[0] == "y":
+        Select_Number(p=True)
+    else:
+        print("Defaulting to DISABLED.")
+        Select_Number()
