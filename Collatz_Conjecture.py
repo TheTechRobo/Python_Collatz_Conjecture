@@ -51,7 +51,7 @@ def Calculate(n, p):
     Select_Number(pSelect)
 
 if __name__ == "__main__":
-    p = input("Would you like to print all numbers? The downside is that it may slow program speed.\nType Y/N: ")
+    p = input("Would you like to print all numbers? The downside is that it will drastically slow program speed - for me with a very big number, it was a matter of half a second without, and a minute with.\nType Y/N: ")
     p = p.lower()
     if p[0] == "y":
         Select_Number(p=True)
