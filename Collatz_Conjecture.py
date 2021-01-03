@@ -10,7 +10,9 @@ def Select_Number(p=False):
     """
     parameter p: Whether to print or not, default being False.
     """
-    if p:
+    global pSelect
+    pSelect = p
+    if pSelect:
         def p(string):
             print(string, end=", ")
     else:
@@ -20,12 +22,10 @@ def Select_Number(p=False):
         sn = int(input("\nEnter the number you wish to calculate: "))
     except Exception as ename:
         raise ValueError("Invalid number.\n\n")
-        Select_Number()
     if (sn == 0):
         raise ValueError("Invalid number.\n\n")
-        Select_Number()
     else:
-        Calculate(sn)
+        Calculate(sn, p)
 
 def Calculate(n, p):
     """
@@ -48,7 +48,7 @@ def Calculate(n, p):
             it_count += 1
     end = perf_counter_ns()
     print ("The number has reached " + str(n) + " with only " + str(it_count) + " iterations! (Time taken: " + format(end-start) + " nanoseconds.)")
-    Select_Number()
+    Select_Number(pSelect)
 
 if __name__ == "__main__":
     p = input("Would you like to print all numbers? The downside is that it may slow program speed.\nType Y/N: ")
