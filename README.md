@@ -9,16 +9,16 @@ I created this whilst learning how to program with python3. The program uses a w
 <hr />
 UPDATE LOG
 
+From May 2020 to January 2020 (by TheTechRobo):
+  - Added option to print numbers
+  - Add docstrings
+  - Move things around
+  - minor changes
+
 17/12/20 (10:27) (by lewiswatson55):
   - Updated to non-deprecated time module
   - Removed Test/Beta Files
   - Noted project is not actively maintained
-
-Sunday May 17, 2020 (by thetechrobo):
-
-- Forked
-- Minor changes
-
 
 13/08/17 (02:24) (by lewiswatson55):
   - Added Iteration Count
